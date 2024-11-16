@@ -14,14 +14,30 @@ let favouriteWords = JSON.parse(localStorage.getItem("favouriteWords")) || [];
 
 searchButton.addEventListener("click", async () => {
     const word = document.getElementById('input').value.trim();
-    let favouriteWords = JSON.parse(localStorage.getItem("favouriteWords")) || [];
+
     if (word) {
         try {
             const data = await fetchWordData(word);
             displayWordData(data, word);
-            checkFavoriteWords(word)
+
+        
+            const apiUrl = "https://673612775995834c8a954fe2.mockapi.io/api/v1/favourites";
+            const response = await fetch(apiUrl);
+            if (!response.ok) {
+                throw new Error("Failed to fetch favorites from Mock API");
+            }
+
+            const favouriteWords = await response.json();
+            const isFavorite = favouriteWords.some(fav => fav.word === word);
+
+            if (isFavorite) {
+                favouriteButton.classList.add("in_favourites");
+            } else {
+                favouriteButton.classList.remove("in_favourites");
+            }
+
         } catch (error) {
-            console.log("Error fetching the word data", error);
+            console.error("Error fetching the word data or checking favorites:", error);
         }
     } else {
         alert("Please enter a word to search!");
