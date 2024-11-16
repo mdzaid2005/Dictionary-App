@@ -1,0 +1,375 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: lightcoral;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.container {
+    background-color: #fff;
+    width: 90vmin;
+    position: relative;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s ease-in-out, popIn 1s ease-out, textGlow 2s ease-in-out infinite alternate;
+    overflow: hidden;
+    transform: scale(0.95);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes popIn {
+    from {
+        transform: scale(0.8);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+@keyframes textGlow {
+    0% {
+        color: #F08080;
+        text-shadow: 0 0 15px #F08080, 0 0 30px #F08080, 0 0 45px #F08080;
+    }
+    100% {
+        color: #333;
+        text-shadow: none;
+    }
+}
+
+.search_box {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    animation: slideIn 0.8s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.search_box input {
+    padding: 12px;
+    width: 75%;
+    border: 2px solid #F08080;
+    background-color: #fff;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(240, 128, 128, 0.1);
+    animation: textFadeIn 1s ease-in-out;
+}
+
+@keyframes textFadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.search_box input:focus {
+    border-color: #F08080;
+    background-color: #fefefe;
+    box-shadow: 0 0 15px rgba(240, 128, 128, 0.3);
+}
+
+.search_box button {
+    padding: 12px 25px;
+    width: 20%;
+    background-color: #F08080;
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(240, 128, 128, 0.2);
+    animation: buttonPopIn 0.8s ease-out;
+}
+
+@keyframes buttonPopIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.search_box button:hover {
+    background-color: #e66c6c;
+    transform: translateY(-4px);
+    box-shadow: 0 6px 15px rgba(240, 128, 128, 0.3);
+}
+
+.result {
+    margin-top: 40px;
+    animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.result h3 {
+    font-size: 32px;
+    color: #F08080;
+    font-weight: 600;
+    margin-bottom: 15px;
+    animation: bounceIn 0.8s ease-out, typingEffect 2s steps(30) 1s forwards;
+}
+
+@keyframes bounceIn {
+    0% {
+        transform: scale(0.8);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes typingEffect {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+.result .word {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.result .details {
+    display: flex;
+    gap: 20px;
+    color: #555;
+    font-size: 16px;
+    margin-top: 10px;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.result button {
+    background-color: transparent;
+    color: #F08080;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.result button:hover {
+    transform: scale(1.1);
+}
+
+.word_meaning,
+.word_example {
+    font-size: 18px;
+    color: #333;
+    margin-top: 20px;
+    animation: fadeInText 1s ease-in-out;
+}
+
+@keyframes fadeInText {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.word_meaning {
+    font-weight: 500;
+}
+
+.word_example {
+    color: #666;
+    font-style: italic;
+    padding-left: 20px;
+    border-left: 5px solid #F08080;
+    animation: fadeInLeft 1s ease-out;
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.favorite-button {
+    display: inline-block;
+    padding: 12px 25px;
+    font-size: 16px;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    text-align: center;
+    background-color: #333;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.favorite-button:not(.in-favorites) {
+    background-color: #555;
+}
+
+.favorite-button.in-favorites {
+    background-color: #F08080;
+}
+
+.favorite-button:hover {
+    opacity: 0.9;
+    transform: translateY(-4px);
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 85%;
+        padding: 30px;
+    }
+
+    .search_box input {
+        width: 65%;
+    }
+
+    .search_box button {
+        width: 30%;
+    }
+
+    .result h3 {
+        font-size: 28px;
+    }
+
+    .result .details {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 20px;
+    }
+
+    .search_box input {
+        width: 50%;
+    }
+
+    .search_box button {
+        width: 40%;
+    }
+
+    .word_meaning,
+    .word_example {
+        font-size: 16px;
+    }
+}
+
+.favourite_button {
+    margin-top: 20px;
+    font-size: 20px;
+    outline: none;
+    border: none;
+    background-color: whitesmoke;
+    position: relative;
+
+}
+
+/* Base styles for the favorite button */
+.favourite_button {
+    padding: 10px 20px;
+    border: 2px solid lightcoral; /* Light Coral border */
+    background-color: transparent;
+    color: lightcoral; /* Light Coral color */
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.favourite_button:hover {
+    background-color: lightcoral;
+    color: white;
+}
+
+/* When the word is in favorites, add the 'in-favorites' class */
+.in_favourites {
+    background-color: lightcoral;
+    color: white;
+    border-color: lightcoral;
+    
+}
+
+/* Animation when button is clicked */
+.favourite_button:active {
+    transform: scale(0.95); /* Slight shrink effect when clicked */
+}
+
+
+.favourite_button.in_favourites:before {
+    opacity: 1;
+    background-color: lightcoral;
+    color: lightcoral;
+}
+
+/* Make the button more prominent when active */
+.favourite_button:focus {
+    outline: none;
+    box-shadow: 0 0 5px 2px rgba(255, 99, 71, 0.6);
+}
